@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import './css/bootstrap.min.css'
+import './css/font-awesome.min.css'
+import './css/nouislider.min.css'
+import './css/slick.css'
+import './css/slick-theme.css'
+import './css/style.css'
+import Header from "./components/Base/Header";
+import Footer from "./components/Base/Footer";
+import Navigation from "./components/Base/Navigation";
+import Collections from "./components/Base/Collections";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <Header/>
+            <Navigation/>
+            <Footer/>
+        </div>
+    );
 }
 
 export default App;
