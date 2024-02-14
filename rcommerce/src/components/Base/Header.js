@@ -1,18 +1,32 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios'
 
 function Header() {
+    const [company, setCompany] = useState({});
+    console.log(company);
+    useEffect(()=>{
+        async function fetchCompany() {
+            const {data} = await axios.get('http://localhost:8001/company/');
+            console.log(data);
+            setCompany(data);
+        }
+        fetchCompany();
+    }, []);
+
     return (
         <header>
             <div id="top-header">
                 <div className="container">
                     <ul className="header-links pull-left">
-                        <li><a href="#"><i className="fa fa-phone"></i> +021-95-51-84</a></li>
-                        <li><a href="#"><i className="fa fa-envelope-o"></i> email@email.com</a></li>
-                        <li><a href="#"><i className="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+                        <>
+                            <li><a href="#"><i className="fa fa-phone"></i>{company.telephone}</a></li>
+                            <li><a href="#"><i className="fa fa-envelope-o"></i>{company.email}</a></li>
+                            <li><a href="#"><i className="fa fa-map-marker"></i>{company.address}</a></li>
+                        </>
                     </ul>
                     <ul className="header-links pull-right">
                         <li><a href="#"><i className="fa fa-dollar"></i> USD</a></li>
-                        <li><a href="#"><i className="fa fa-user-o"></i> My Account</a></li>
+                        <li><a href="#"><i className="fa fa-user-o"></i>Mi cuenta</a></li>
                     </ul>
                 </div>
             </div>
@@ -35,7 +49,7 @@ function Header() {
                             <div className="header-search">
                                 <form>
                                     <select className="input-select">
-                                        <option value="0">All Categories</option>
+                                        <option value="0">Categorias</option>
                                         <option value="1">Category 01</option>
                                         <option value="1">Category 02</option>
                                     </select>
