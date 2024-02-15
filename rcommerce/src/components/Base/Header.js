@@ -1,16 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios'
+import { fetchCompanyData } from './funtions/companys'
 
 function Header() {
     const [company, setCompany] = useState({});
-    console.log(company);
-    useEffect(()=>{
-        async function fetchCompany() {
-            const {data} = await axios.get('http://localhost:8001/company/');
-            console.log(data);
-            setCompany(data);
-        }
-        fetchCompany();
+
+    useEffect(() => {
+        fetchCompanyData(setCompany);
     }, []);
 
     return (

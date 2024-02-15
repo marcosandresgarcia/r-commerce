@@ -1,7 +1,14 @@
-import React from 'react'
-import {Container, Row, Col} from 'react-bootstrap'
+import React, {useEffect, useState} from 'react'
+import { fetchCompanyData } from './funtions/companys'
 
 function Footer() {
+
+    const [company, setCompany] = useState({});
+
+    useEffect(() => {
+        fetchCompanyData(setCompany);
+    }, []);
+
     return (
         <footer id="footer">
 
@@ -12,20 +19,19 @@ function Footer() {
                     <div className="row">
                         <div className="col-md-3 col-xs-6">
                             <div className="footer">
-                                <h3 className="footer-title">About Us</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut.</p>
+                                <h3 className="footer-title">Sobre nosotros</h3>
+                                {company.about_us && <p>{company.about_us}</p>}
                                 <ul className="footer-links">
-                                    <li><a href="#"><i className="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-                                    <li><a href="#"><i className="fa fa-phone"></i>+021-95-51-84</a></li>
-                                    <li><a href="#"><i className="fa fa-envelope-o"></i>email@email.com</a></li>
+                                    <li><a href="#"><i className="fa fa-map-marker"></i>{company.address}</a></li>
+                                    <li><a href="#"><i className="fa fa-phone"></i>{company.telephone}</a></li>
+                                    <li><a href="#"><i className="fa fa-envelope-o"></i>{company.email}</a></li>
                                 </ul>
                             </div>
                         </div>
 
                         <div className="col-md-3 col-xs-6">
                             <div className="footer">
-                                <h3 className="footer-title">Categories</h3>
+                                <h3 className="footer-title">Categorias</h3>
                                 <ul className="footer-links">
                                     <li><a href="#">Hot deals</a></li>
                                     <li><a href="#">Laptops</a></li>
@@ -40,26 +46,25 @@ function Footer() {
 
                         <div className="col-md-3 col-xs-6">
                             <div className="footer">
-                                <h3 className="footer-title">Information</h3>
+                                <h3 className="footer-title">Informacion</h3>
                                 <ul className="footer-links">
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Orders and Returns</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Sobre nosotros</a></li>
+                                    <li><a href="#">Contactenos</a></li>
+                                    <li><a href="#">Politicas de privacidad</a></li>
+                                    <li><a href="#">Ordenes</a></li>
+                                    <li><a href="#">Terminos y Condiciones</a></li>
                                 </ul>
                             </div>
                         </div>
 
                         <div className="col-md-3 col-xs-6">
                             <div className="footer">
-                                <h3 className="footer-title">Service</h3>
+                                <h3 className="footer-title">Servicio</h3>
                                 <ul className="footer-links">
-                                    <li><a href="#">My Account</a></li>
-                                    <li><a href="#">View Cart</a></li>
-                                    <li><a href="#">Wishlist</a></li>
-                                    <li><a href="#">Track My Order</a></li>
-                                    <li><a href="#">Help</a></li>
+                                    <li><a href="#">Mi cuenta</a></li>
+                                    <li><a href="#">Carrito de compras</a></li>
+                                    <li><a href="#">Lista de deseos</a></li>
+                                    <li><a href="#">Ayuda</a></li>
                                 </ul>
                             </div>
                         </div>
